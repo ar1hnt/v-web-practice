@@ -44,9 +44,17 @@ function groupByCategory(data) {
     let categories = {}
 
     for (let i = 0; i  < filtered_products.length; i++) {
-        categories[filtered_products[i]["category"]] = {
-            "productName": filtered_products[i]["name"], 
-            "price": filtered_products[i]["price"]
+        if (categories[filtered_products[i]["category"]]) {
+            categories[filtered_products[i]["category"]].push({
+                "productName": filtered_products[i]["name"], 
+                "price": filtered_products[i]["price"]
+            })
+        }
+        else {
+            categories[filtered_products[i]["category"]] = [{
+                "productName": filtered_products[i]["name"], 
+                "price": filtered_products[i]["price"]
+            }]
         }
     } 
 
